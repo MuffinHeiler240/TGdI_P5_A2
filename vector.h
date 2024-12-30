@@ -3,9 +3,9 @@
 /** forward declaration to an internal hidden vector structure. */
 typedef struct vector_struct *vector;
 
-/** create a (zero filled) N dimensional double vector.
+/** create a (zero filled) N dimensional int vector.
  *  @param n the length of the vector 0<n
- *  @return a N-dimensional double vector reference
+ *  @return a N-dimensional int vector reference
  */
 vector createVector(unsigned short n);
 /**
@@ -17,28 +17,28 @@ void rmVector(vector v);
 /** @return length N of the vector */
 unsigned short size(vector v);
 /** access to the internal data array.*/
-double* values(vector v);
+int* values(vector v);
 /** get the vector entry with index j
  * @param v vector reference
  * @param j the index number  0<=j < N
  * @return the entry
  * @print error and exits if dimensions wrong
  */
-double getValue(vector v, unsigned short j);
+int getValue(vector v, unsigned short j);
 /** set the vector entry with index j
  * @param v vector reference
  * @param j the index number  0<=j < N
  * @param value the entry to set
  * @print error and exits if dimensions wrong
  */
-void setValue(vector v, unsigned short j, double value);
+void setValue(vector v, unsigned short j, int value);
 /** scalar product between to vectors.
  * @param a vector reference
  * @param a vector reference
  * @return scalar product a*b
  * @print error and exits if dimensions wrong
  */
-double vectorDotVector(vector a, vector b);
+int vectorDotVector(vector a, vector b);
 /** addition of two vectors.
  * @param a vector reference
  * @param a vector reference

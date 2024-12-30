@@ -12,7 +12,7 @@
 typedef struct matrix_struct {
     unsigned short n;
     unsigned short m;
-    double **data;
+    int **data;
 } matrix_struct;
 
 matrix createMatrix(unsigned short n, unsigned short m) {
@@ -20,9 +20,9 @@ matrix createMatrix(unsigned short n, unsigned short m) {
     matrix a = (matrix) malloc(sizeof(matrix_struct));
     a->n = n;
     a->m = m;
-    a->data = (double **) calloc(n, sizeof(double *));
+    a->data = (int **) calloc(n, sizeof(int *));
     for (i = 0; i < n; i++) {
-        a->data[i] = (double *) calloc(m, sizeof(double));
+        a->data[i] = (int *) calloc(m, sizeof(int));
     }
     return a;
 }
@@ -44,11 +44,11 @@ unsigned short cols(matrix a) {
     return a->m;
 }
 
-double** data(matrix a) {
+int** data(matrix a) {
     return a->data;
 }
 
-double getEntry(matrix a, unsigned short r, unsigned short c) {
+int getEntry(matrix a, unsigned short r, unsigned short c) {
     if (r >= a->n || c >= a->m) {
         printf("Error: index out of bounds\n");
         exit(-1);
@@ -56,7 +56,7 @@ double getEntry(matrix a, unsigned short r, unsigned short c) {
     return a->data[r][c];
 }
 
-void setEntry(matrix a, unsigned short r, unsigned short c, double v) {
+void setEntry(matrix a, unsigned short r, unsigned short c, int v) {
     if (r >= a->n || c >= a->m) {
         printf("Error: index out of bounds\n");
         exit(-1);
@@ -122,7 +122,7 @@ vector matrixDotVector(matrix a, vector x) {
 
 vector matrixDotVectorWithTempVar(matrix a, vector x) {
     unsigned short i,j;
-    double temp = 0;
+    int temp = 0;
     if (a->m != size(x)) {
         printf("Error: matrix dimensions do not match\n");
         exit(-1);

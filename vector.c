@@ -9,13 +9,13 @@
 
 typedef struct vector_struct {
     unsigned short n;
-    double *data;
+    int *data;
 } vector_struct;
 
 vector createVector(unsigned short n) {
     vector v = (vector) malloc(sizeof(vector_struct));
     v->n = n;
-    v->data = (double *) calloc(n, sizeof(double));
+    v->data = (int *) calloc(n, sizeof(int));
     return v;
 }
 
@@ -28,11 +28,11 @@ unsigned short size(vector v) {
     return v->n;
 }
 
-double* values(vector v) {
+int* values(vector v) {
     return v->data;
 }
 
-double getValue(vector v, unsigned short j) {
+int getValue(vector v, unsigned short j) {
     if( j >= v->n) {
         printf("Error: index out of bounds\n");
         exit(-1);
@@ -40,7 +40,7 @@ double getValue(vector v, unsigned short j) {
     return v->data[j];
 }
 
-void setValue(vector v, unsigned short j, double value) {
+void setValue(vector v, unsigned short j, int value) {
     if( j >= v->n) {
         printf("Error: index out of bounds\n");
         exit(-1);
@@ -48,9 +48,9 @@ void setValue(vector v, unsigned short j, double value) {
     v->data[j] = value;
 }
 
-double vectorDotVector(vector a, vector b) {
+int vectorDotVector(vector a, vector b) {
     unsigned short i;
-    double c = 0;
+    int c = 0;
 
     if (a->n != b->n) {
         printf("Error: vector dimensions do not match\n");

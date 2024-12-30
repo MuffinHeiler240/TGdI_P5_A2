@@ -5,10 +5,10 @@
 /** forward declaration to an internal hidden matrix structure. */
 typedef struct matrix_struct *matrix;
 
-/** create a (zero filled) NxM double matrix.
+/** create a (zero filled) NxM int matrix.
  *  @param n the number of rows, with 0<n
  *  @param m the number of columns with 0<m
- *  @return a NxM double matrix reference
+ *  @return a NxM int matrix reference
  */
 matrix createMatrix(unsigned short n, unsigned short m);
 
@@ -25,7 +25,7 @@ unsigned short rows(matrix a);
 unsigned short cols(matrix a);
 
 /** access to the internal NxM data.     */
-double** data(matrix a);
+int** data(matrix a);
 
 /** get the matrix entry with index r,c
  * @param a matrix reference
@@ -34,7 +34,7 @@ double** data(matrix a);
  * @return the entry
  * @print error and exits if dimensions wrong
  */
-double getEntry(matrix a, unsigned short r, unsigned short c);
+int getEntry(matrix a, unsigned short r, unsigned short c);
 
 /** set the matrix entry with index r,c
  * @param a matrix reference
@@ -43,7 +43,7 @@ double getEntry(matrix a, unsigned short r, unsigned short c);
  * @param v the data value
  * @print error and exits if dimensions wrong
  */
-void setEntry(matrix a, unsigned short r, unsigned short c, double v);
+void setEntry(matrix a, unsigned short r, unsigned short c, int v);
 
 /**
  * Calculate the matrix product C = A * B. This method reports an
